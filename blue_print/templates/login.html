@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+</head>
+
+<body>
+    <div style="text-align: center;">
+        <h1 style="align-self: center;"> 书籍管理系统 </h1>
+    </div>
+
+    <div style="text-align: center;">
+        <form action="/sigin/login" method="post" style="display: flex; flex-direction: column; align-items: center;">
+            <label style="display: inline-block; margin-bottom: 10px;">用户名 :</label>
+            <input type="text" name="username" style="display: inline-block; margin-bottom: 10px;"> <br>
+            <label style="display: inline-block; margin-bottom: 10px;">密码 :</label>
+            <input type="text" name="password" style="display: inline-block; margin-bottom: 10px;"> <br>
+            <input type="submit" value="   登录   " style="margin-top: 10px;height: 30;">
+        </form>
+        <p style="color: brown;">
+            {{ error }}
+        </p>
+    </div>
+
+</body>
+
+</html>
