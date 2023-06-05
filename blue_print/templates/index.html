@@ -6,6 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>首页</title>
+
+    <script>
+        function deleteBook(id) {
+            fetch(`/book/book?id=${id}`, {
+                method: 'DELETE'
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert("删除成功！");
+                        location.reload();
+                    } else {
+                        alert('删除错误:', response.statusText);
+                    }
+                })
+                .catch(error => {
+                    alert('删除失败，请重试:', error);
+                });
+
+        }
+    </script>
 </head>
 
 <body>
@@ -18,7 +38,7 @@
     </div>
 
     <div style="text-align: center;">
-        <table border=1 width="500" height="120" align="center" style="align-self: center;">
+        <table border=1>
             <thead>
                 <tr>
                     <th>ID</th>
@@ -29,6 +49,21 @@
                     <th>操作</th>
                 </tr>
             </thead>
+            <tbody>
+                {% for item in result_books %}
+                <tr style="height: 50px !important; overflow: hidden;">
+                    <td>{{ item.id }} </td>
+                    <td>{{ item.name }} </td>
+                    <td>{{ item.intro }}</td>
+                    <td>{{ item.author_name }}</td>
+                    <td>{{ item.created }}</td>
+                    <td>
+                        <a href="/book/editing/{{ item.id }}"> 编辑 </a>
+                        <a href="#" onclick="deleteBook('{{ item.id }}')">删除</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
         </table>
     </div>
 

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编辑图书</title>
+</head>
+
+<body>
+    <div style="text-align: center;">
+        <h1 style="align-self: center;"> 编辑书籍 </h1>
+    </div>
+
+    <div style="text-align: center;">
+        id: <p>{{book.id}}</p>
+        <form action="/book/editing/{{book.id}}" method="post">
+            书名：<input type="text" , name="book_name" , value="{{ book.name }}"> <br>
+            作者：<input type="text" , name="author_name" , value="{{ book.author_name }}"> <br>
+            简介：<input type="text" , name="intro" , value="{{ book.intro }}"> <br>
+            年代：<input type="datetime-local" name="created" id="created" min="0000-00-01T00:00" max="2023-06-01T00:00" ,
+                value="{{ book.created }}">
+            <br>
+            <input type="submit" value="保存">
+        </form>
+    </div>
+</body>
+
+</html>
