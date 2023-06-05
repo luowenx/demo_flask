@@ -3,6 +3,7 @@ from flask import (
 )
 from datetime import datetime
 from .. import db
+from .auth import auth
 
 
 bp = Blueprint('book', __name__)
@@ -16,6 +17,7 @@ def query_db(query, args=(), one=False):
 
 
 @bp.route('/add', methods=['GET', 'POST'])
+@auth
 def add():
     if request.method == 'GET':
         return render_template('addbook.html')
@@ -51,6 +53,7 @@ def add():
 
 
 @bp.route('/book', methods=['GET', 'POST', 'DELETE', 'PUT'])
+@auth
 def book():
     if request.method == 'GET':
         id = request.args.get('id')
@@ -79,6 +82,7 @@ def book():
 
 
 @bp.route('/editing/<int:id>', methods=['GET', 'POST'])
+@auth
 def editing(id):
     if request.method == 'GET':
         query = "SELECT * FROM book WHERE id = ?"
