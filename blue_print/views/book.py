@@ -4,7 +4,7 @@ from flask import (
 from datetime import datetime
 from .. import db
 from .auth import auth
-
+from dbutils.pooled_db import PooledDB
 
 bp = Blueprint('book', __name__)
 
